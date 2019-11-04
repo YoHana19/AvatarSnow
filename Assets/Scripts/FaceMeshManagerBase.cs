@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using AvatarSnow;
 using UnityEngine;
+using UnityEngine.XR;
 using UnityEngine.XR.iOS;
 
 public abstract class FaceMeshManagerBase : MonoBehaviour
@@ -10,6 +12,7 @@ public abstract class FaceMeshManagerBase : MonoBehaviour
     private const int DEFAULT_ANIMATION_LENGTH = 75;
     
     [SerializeField] protected Vector3 offset;
+    [SerializeField] protected EffectManager effectManager;
     [SerializeField] protected GameObject model;
     [SerializeField] protected Transform headJoint;
 
@@ -42,6 +45,8 @@ public abstract class FaceMeshManagerBase : MonoBehaviour
         
         defaultRotation = headJoint.localRotation;
         StartCoroutine(DisactiveAnimator());
+        
+        effectManager.SetEffect(EffectType.HeartBeam);
     }
 
     private void OnDestroy()
@@ -63,5 +68,26 @@ public abstract class FaceMeshManagerBase : MonoBehaviour
             yield return null;
         }
         model.GetComponent<Animator>().enabled = false;
+    }
+
+    protected void InvokEffector()
+    {
+        var valOfJawOpen = currentBlendShapes[ARBlendShapeLocation.JawOpen];
+        if (valOfJawOpen > 0.6f)
+        {
+            effectManager.OnMouthOpen();
+        } else if (valOfJawOpen < 0.05f)
+        {
+            effectManager.OnMouthClose();
+        }
+
+        var valOfMouthPucker = currentBlendShapes[ARBlendShapeLocation.MouthPucker];
+        if (valOfMouthPucker > 0.5f)
+        {
+            effectManager.OnMouthPuckered();
+        } else if (valOfMouthPucker < 0.2f)
+        {
+            effectManager.OnMouthUnPuckered();
+        }
     }
 }

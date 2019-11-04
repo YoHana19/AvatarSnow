@@ -91,6 +91,8 @@ public sealed class WhiteFaceMeshManager : FaceMeshManagerBase
                     break;
             }
         }
+
+        InvokEffector();
     }
 
     protected override void FaceRemoved (ARFaceAnchor anchorData)
