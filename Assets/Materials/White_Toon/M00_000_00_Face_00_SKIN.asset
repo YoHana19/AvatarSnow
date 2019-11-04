@@ -132,6 +132,7 @@ Material:
     - _WorkflowMode: 0
     - _ZWrite: 1
     m_Colors:
+    - Color_DD6F341E: {r: 0.5310916, g: 1.845761, b: 1.2608876, a: 0}
     - Vector3_5C51A3DA: {r: 0, g: 0, b: -1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
