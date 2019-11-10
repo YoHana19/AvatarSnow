@@ -7,7 +7,8 @@ namespace AvatarSnow
     public enum EffectType
     {
         None = 0,
-        HeartBeam = 1
+        HeartBeam = 1,
+        FireBless
     }
     
     public class EffectManager : MonoBehaviour

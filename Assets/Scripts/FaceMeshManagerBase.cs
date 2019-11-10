@@ -45,8 +45,6 @@ public abstract class FaceMeshManagerBase : MonoBehaviour
         
         defaultRotation = headJoint.localRotation;
         StartCoroutine(DisactiveAnimator());
-        
-        effectManager.SetEffect(EffectType.HeartBeam);
     }
 
     private void OnDestroy()

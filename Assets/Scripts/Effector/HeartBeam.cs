@@ -6,7 +6,7 @@ using UnityEngine.VFX;
 public class HeartBeam : MonoBehaviour, IEffector
 {
     [SerializeField] private Transform parent;
-    private Vector3 initPosistion = Vector3.zero;
+    private readonly Vector3 initPosistion = Vector3.zero;
     private VisualEffect vfx;
     private Transform originParent;
 
